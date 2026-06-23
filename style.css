@@ -84,8 +84,6 @@ h1 {
 .card-icon-svg-seplog { width: 90%; height: 90%; }
 .card-name { font-weight: 720; font-size: 17px; letter-spacing: -0.2px; }
 .card-desc { color: var(--muted); font-size: 13px; margin-top: 6px; line-height: 1.5; flex: 1; }
-.card-version { font-size: 11.5px; color: var(--muted); margin-top: 10px; min-height: 16px; }
-
 .btn-row { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
 .btn {
   flex: 1; min-width: 120px; text-align: center;

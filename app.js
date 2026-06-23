@@ -69,7 +69,6 @@ function renderCard(app) {
     </div>
     <div class="card-name">${app.name}</div>
     <div class="card-desc">${app.description}</div>
-    <div class="card-version" data-role="version">Recherche de la dernière version…</div>
     <div class="btn-row" data-role="buttons">
       <span class="btn disabled"><i class="ti ti-brand-windows"></i> Windows</span>
       <span class="btn btn-secondary disabled"><i class="ti ti-brand-android"></i> Android</span>
@@ -79,13 +78,11 @@ function renderCard(app) {
 }
 
 async function fillDownloadLinks(app, cardEl) {
-  const versionEl = cardEl.querySelector('[data-role="version"]');
   const buttonsEl = cardEl.querySelector('[data-role="buttons"]');
   try {
     const release = await latestRelease(app.repo);
     const exe = findAsset(release.assets, ".exe");
     const apk = findAsset(release.assets, ".apk");
-    versionEl.textContent = release.tag_name ? `Version ${release.tag_name.replace(/^v/, "")}` : "";
 
     buttonsEl.innerHTML = `
       ${exe
@@ -96,7 +93,6 @@ async function fillDownloadLinks(app, cardEl) {
         : `<span class="btn btn-secondary disabled"><i class="ti ti-brand-android"></i> Android</span>`}
     `;
   } catch (e) {
-    versionEl.textContent = "";
     buttonsEl.innerHTML = `
       <a class="btn" href="https://github.com/${app.repo}/releases/latest" target="_blank" rel="noreferrer">
         <i class="ti ti-download"></i> Voir les téléchargements
